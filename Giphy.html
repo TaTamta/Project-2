@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GIPHY API</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Styles.css">
+</head>
+
+<body>
+    <section class="top_part">
+        <div class="container">
+            <div class="heading">
+                <h1 class="title">Giphy API Example</h1>
+    </section>
+
+
+    <section class="search_part">
+        <div class="container">
+            <div class="search" id="search">
+                <div class="last_searches_button"></div>
+                <input type="text" class="input" id="input_word">
+                <button class="search_button" id="search_button" onclick="request()">Submit</button>
+                <button class="trendings_button" >See What's trending</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="line"></div>
+
+    <section class="results_part">
+        <div class="container">
+            <div class="results" id="results">
+            </div>
+        </div>
+    </section>
+
+
+</body>
+<script src="/giphy.js" type="text/javascript"></script>
+
+</html>
