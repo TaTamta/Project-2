@@ -22,7 +22,8 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.suggestion {
+
+#suggestion {
     background-color: #EFEEEF;
     padding: 2px 8px;
     color: black;
@@ -73,8 +74,8 @@
     cursor: pointer;
 }
 
+
 .results {
-    display: block;
     display: flex;
     justify-content: space-between;
 }
