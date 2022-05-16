@@ -16,6 +16,26 @@
     justify-content: center;
     margin-bottom: 5px;
 }
+#suggestions{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.suggestion {
+    background-color: #EFEEEF;
+    padding: 2px 8px;
+    color: black;
+    line-height: 31px;
+    border-radius: 6px;
+    margin-right: 6px;
+    margin-left: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+
 
 .line {
     display: block;
