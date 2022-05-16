@@ -6,13 +6,13 @@ const trendingsURL = "https://api.giphy.com/v1/gifs/trending?"
 // const searchURL = `https://api.giphy.com/v1/gifs/search?q=${input}&rating=g&api_key=${apiKey}`;
 
 let searchButton = document.getElementById('search_button');
-let randomsButton = document.getElementById('trendings_button')
+let trendingsButton = document.getElementById('trendings_button')
 
 searchButton.addEventListener('click',() => {
     searchRequest()
 })
 
-randomsButton.addEventListener('click', () => {
+trendingsButton.addEventListener('click', () => {
     trendingsRequest()
 })
 
