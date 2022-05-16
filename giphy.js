@@ -1,18 +1,31 @@
-const api_key = "aFFKTuSMjd6j0wwjpFCPXZipQbcnw3vB";
-const input_word = document.getElementById('#input_word');
-let apiURL = `https://api.giphy.com/v1/gifs/search?q=${input_word}&rating=g&api_key=${api_key}&limit=25`;
+const giphyUrl = "https://api.giphy.com/v1/gifs/search?";
+const apiKey = "aFFKTuSMjd6j0wwjpFCPXZipQbcnw3vB";
+const trendingsURL = "https://api.giphy.com/v1/gifs/trending?"
 
-function request() {
-    fetch(apiURL).then(function(res){
-        return res.json()
-    })
-    .then(function(json){
-        let imgUrl=json.data[0].images.fixed_height.url;
-        let img = document.createElement("img");
-        document.getElementById('results').innerHTML = '<img></img>'
-        img.setAttribute('src', imgUrl)
-        document.body.appendChild(img)
-    })
+// const input = document.getElementById('input_word').value;
+// const searchURL = `https://api.giphy.com/v1/gifs/search?q=${input}&rating=g&api_key=${apiKey}`;
+
+let searchButton = document.getElementById('search_button');
+
+
+searchButton.addEventListener('click',() => {
+    request()
+})
+
+async function request(){
+    const search_word = document.getElementById("input_word").value;
+    let response = await fetch(`${giphyUrl}api_key=${apiKey}&q=${search_word}`);
+    console.log(response);
+    let gifs = await response.json()
+    console.log(gifs)
+    showData(gifs)
 }
 
+
+function showData(gifs){
+    for(let i = 0; i < gifs.data.length; i++){
+        document.querySelector('#results').innerHTML = `<img src="${gifs.data[i].images.fixed_height.url}">`
+    }
+    
+}
 
