@@ -9,6 +9,13 @@ let searchButton = document.getElementById('search_button');
 let randomsButton = document.getElementById('trendings_button');
 const suggestions = ['internet Cats', "meme's", 'Typing', 'Space', 'Rick and Morty' ];
 
+function renderSuggestions(){
+    for (let i = 0; i < suggestions.length; i++){
+        document.getElementById('suggestions').innerHTML += "<button class='suggestion'>" + suggestions[i] + "</button>"
+    }
+};
+renderSuggestions();
+
 
 searchButton.addEventListener('click',() => {
     searchRequest()  
@@ -18,6 +25,7 @@ searchButton.addEventListener('click',() => {
 randomsButton.addEventListener('click', () => {
     trendingsRequest()
 })
+
 
 
 
@@ -61,58 +69,3 @@ function showData(gifs){
     }
 }
 
-
-
-
-let suggestionsSection = {
-    'id': document.getElementById('suggestions'),
-    'suggestionsList': [],
-
-
-    setSuggestionsList: function (keyWords) {
-        this.suggestionsList = keyWords;
-    },
-
-    setHtmlContent : function (content){
-        this.id.innerHTML = content;
-    },
-
-    renderSuggestions: function (array){
-        for(let i = 0; i < suggestions.length; i++){
-            return`
-            <div class="suggestion">${suggestions[i]}</div>
-            `
-        }
-    },
-
-    renderSuggestionsList: function (list){
-        return list.map((array) => {
-            return this.renderSuggestions(array);
-        }).join('')
-    },
-
-    render: function(keyWords){
-        this.setSuggestionsList(keyWords);
-        let content = this.renderSuggestionsList(this.suggestionsList);
-        this.setHtmlContent(content)
-    }
-
-}
-
-suggestionsSection.render(suggestions);
-
-
-
-
-
-// render suggestions 
-
-// function showSuggestions(){
-//     for (let i = 0; i < suggestions.length; i++){
-//         // let suggestion = `<div class="suggestions">${suggestions[i]}</div>`;
-//         // document.body.suggestions
-//         document.getElementById('suggestions').innerHTML = `<div>${suggestions[i]}</div>`
-//     };
-// }
-
-// showSuggestions();
