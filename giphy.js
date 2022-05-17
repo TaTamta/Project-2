@@ -4,7 +4,7 @@ const trendingsURL = "https://api.giphy.com/v1/gifs/trending?"
 
 
 let searchButton = document.getElementById('search_button');
-let randomsButton = document.getElementById('trendings_button');
+let trendingsButton = document.getElementById('trendings_button');
 const suggestions = ['internet Cats', "meme's", 'Typing', 'Space', 'Rick and Morty'];
 let suggButton = document.getElementById("suggestions");
 
@@ -21,19 +21,9 @@ searchButton.addEventListener('click', () => {
 })
 
 
-randomsButton.addEventListener('click', () => {
+trendingsButton.addEventListener('click', () => {
     trendingsRequest()
 })
-
-
-
-
-function showData(gifBase) {
-    for (let i = 0; i < gifBase.data.length; i++) {
-        newImg = `<img src="${gifBase.data[i].images.fixed_height.url}">`;
-        document.querySelector('#results').innerHTML = newImg;
-    }
-}
 
 
 
@@ -41,7 +31,7 @@ function renderSuggestions() {
     for (let val in suggestions) {
         document.getElementById('suggestions').innerHTML += "<button id='suggestion'>" + suggestions[val] + "</button>"
     }
-};
+}
 renderSuggestions();
 
 
@@ -56,31 +46,25 @@ function modifySuggestions(){
 }
 
 
-
-//search suggestions
-async function suggRequest() {
-    for (let val in suggestions) {
-        keyWord = suggestions[val];
-        console.log(suggestions[val])
-    }
-
-    let suggResponse = await fetch(`${giphyUrl}api_key=${apiKey}&q=${keyWord}`);
-    let suggGif = await suggResponse.json()
-    showData(suggGif);
-    console.log(keyWord)
-    console.log(suggResponse)
-}
-
-
-function showData(suggGif) {
-    for (let i = 0; i < suggGif.data.length; i++) {
-        newImg = `<img src="${suggGif.data[i].images.fixed_height.url}">`;
+function showData(gifBase) {
+    for (let i = 0; i < gifBase.data.length; i++) {
+        console.log(gifBase.data[i])
+        newImg = `<img src="${gifBase.data[i].images.fixed_height.url}">`;
         document.querySelector('#results').innerHTML = newImg;
     }
 }
 
 
 
+//search suggestions
+async function suggRequest() {
+    for (let val in suggestions) {
+        keyWord = suggestions[val];
+        let suggResponse = await fetch(`${giphyUrl}api_key=${apiKey}&q=${keyWord}`);
+        let suggGif = await suggResponse.json()
+        showData(suggGif);
+    }
+}
 
 //search trends
 
