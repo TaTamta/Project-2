@@ -16,7 +16,6 @@ suggButton.addEventListener('click', () => {
 
 searchButton.addEventListener('click', () => {
     searchRequest()
-    console.log(suggestions)
     modifySuggestions()
 })
 
@@ -67,9 +66,9 @@ renderSuggestions();
 //search suggestions
 async function suggRequest() {
     for (let val in suggestions) {
-        keyWord = suggestions[val];
+        const keyWord = suggestions[val];
         // console.log(keyWord)
-        let suggResponse = await fetch(`${giphyUrl}api_key=${apiKey}&q=${keyWord}`);
+        let suggResponse = await fetch(`${giphyUrl}api_key=${apiKey}&q=${encodeURIComponent(keyWord)}`);
         let suggGif = await suggResponse.json()
         showData(suggGif);
         // console.log(keyWord)
@@ -85,9 +84,7 @@ async function suggRequest() {
 
 async function trendingsRequest() {
     let trendsResponse = await fetch(`${trendingsURL}api_key=${apiKey}`);
-    console.log(trendsResponse);
     let trends = await trendsResponse.json()
-    console.log(trends)
     showData(trends)
 }
 
@@ -96,10 +93,8 @@ async function trendingsRequest() {
 
 async function searchRequest() {
     const search_word = document.getElementById("input_word").value;
-    let response = await fetch(`${giphyUrl}api_key=${apiKey}&q=${search_word}`);
-    console.log(response);
+    let response = await fetch(`${giphyUrl}api_key=${apiKey}&q=${encodeURIComponent(search_word)}`);
     let gifs = await response.json()
-    console.log(gifs)
     showData(gifs)
 }
 
